@@ -5,13 +5,15 @@ class Team{
     private string $_teamName;
     private int $_creationDate;
     private Country $_country;
-    private array $_player;
+    private array $_play;
 
     public function __construct(string $teamName, int $creationDate, Country $country){
         $this->_teamName = $teamName;
         $this->_creationDate = $creationDate;
         $this->_country = $country;
-        $this->_player = [];
+        $this->_play = [];
+
+        $this->_country->addTeam($this);
     }
 
     // Setter Getter 
@@ -36,13 +38,13 @@ class Team{
         $this->_country = $country;
     }
 
-    public function addPlayer(Play $play){
-        $this->_player = $play;
+    public function addPlay(Play $play){
+        $this->_play[] = $play;
     }
 
     public function displayPlayer(){
-        foreach($this->_player as $player){
-            return $player;
+        foreach($this->_play as $play){
+            return $play->getPlayer();
         }
     }
 
