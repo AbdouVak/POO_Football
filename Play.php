@@ -11,7 +11,7 @@ class Play{
         $this->_team = $team;
         $this->_player = $player;
 
-        $this->_team->addPlayer($this);
+        $this->_team->addPlay($this);
     }
 
     public function getEngagementDate() :int{
@@ -34,5 +34,7 @@ class Play{
     public function SetTeam(Team $team){
         $this->_team = $team;
     }
+
+
 
 }
