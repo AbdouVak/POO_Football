@@ -43,9 +43,13 @@ class Team{
     }
 
     public function displayPlayer(){
+        $arrayTeam= [];
+
         foreach($this->_play as $play){
-            return $play->getPlayer();
+            $arrayTeam[] = $play->getPlayer();
         }
+        
+        return $arrayTeam;
     }
 
     public function __toString(){
