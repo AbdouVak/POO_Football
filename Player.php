@@ -5,26 +5,26 @@ class Player{
     private string $_playerName;
     private int $_birthdayDate;
     private Country $_country;
-    private array $_team;
+    private array $_play;
 
     public function __construct(string $playerName, Country $country, int $birthdayDate){
         $this->_playerName = $playerName;
         $this->_birthdayDate = $birthdayDate;
         $this->_country = $country;
-        $this->_team= [];
+        $this->_play= [];
     }
 
     public function getPlayerName() :string{
         return $this->_playerName;
     }    
-    public function setPlayerName($playerName){
+    public function setPlayerName(string $playerName){
         $this->_playerName = $playerName;
     }
 
     public function getBirthdayDate() :int{
         return $this->_birthdayDate;
     }    
-    public function setBirthdayDate($birthdayDate){
+    public function setBirthdayDate(int $birthdayDate){
         $this->_birthdayDate = $birthdayDate;
     }
 
@@ -35,14 +35,17 @@ class Player{
         $this->_country = $country;
     }
 
-    public function addTeam(Team $team){
-        $this->_team[] = $team;
+    public function addPlay(Play $play){
+        $this->_play[] = $play;
     }
+    
+    public function displayPlay(){
+        $arrayTeam= [];
 
-    public function displayTeam(){
-        foreach($this->_team as $team){
-            return $team;
+        foreach($this->_play as $play){
+            $arrayTeam[] = $play->getTeam().'('.$play->getEngagementDate().')';
         }
+        return $arrayTeam;
     }
 
     public function __toString(){
